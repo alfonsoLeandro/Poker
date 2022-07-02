@@ -32,6 +32,8 @@ def getNumero(inpt):
 class Program:
 
     def __init__(self):
+        print("palos disponibles: ROMBO, PICAS, CORAZONES, TREBOL")
+        print("números disponibles: 1 al 13. 1 es el AS, 11 es la sota, 12 es la reina, 13 es el rey.")
         self.carta1 = Carta(getPalo(input("Palo de primer carta:")),
                             getNumero(input("Numero de primer carta:")))
         self.carta2 = Carta(getPalo(input("Palo de segunda carta:")),
