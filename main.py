@@ -14,11 +14,14 @@ def getPalo(inpt):
         return Palo.TREBOL
     if inpt == "rombo" or inpt == "rombos":
         return Palo.ROMBO
-    print(f"Palo {inpt} no reconocido. Usando ROMBO")
+    print(f"Palo '{inpt}' no reconocido. Usando ROMBO")
     return Palo.ROMBO
 
 
 def getNumero(inpt):
+    if not inpt.isnumeric():
+        print(f"El numero '{inpt}' no existe, usando 1 como numero por defecto.")
+        return 1
     numero = int(inpt)
     if numero > 13 or numero < 1:
         numero = randint(1, 12)
