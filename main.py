@@ -38,23 +38,43 @@ class Program:
             print("Las dos cartas no pueden ser iguales.")
             return
 
-        print(self.carta1)
-        print(self.carta2)
+        print()
+        print(f"carta 1: {self.carta1}")
+        print(f"carta 2: {self.carta2}")
+        print()
 
-        posibilidades_color = self.calcular_posibilidades_color()
-        posibilidades_poker = self.calcular_posibilidades_poker()
-        todas_las_posibilidades = combinatoria(52, 5)
+        probabilidad_color = self.calcular_posibilidades_color()
+        probabilidad_escalera_real = self.calcular_posibilidades_escalera_real()
 
-        print(f"Cantidad de posibilidades de tener color: {posibilidades_color}."
-              f" Probabilidad: {(posibilidades_color/todas_las_posibilidades) * 100}%")
-        print(f"Cantidad de posibilidades de tener poker: {posibilidades_poker}."
-              f" Probabilidad: {(posibilidades_poker/todas_las_posibilidades) * 100}%")
+        print(f"Probabilidad de tener color: {'{:.2f}'.format(probabilidad_color * 100)}%.")
+        print(f"Probabilidad de tener escalera real: {'{:.2f}'.format(probabilidad_escalera_real * 100)}%.")
+        print()
 
     def calcular_posibilidades_color(self):
-        return 1_000_000
+        if self.carta1.palo == self.carta2.palo:
+            return (
+                    ((combinatoria(11, 3)*39*38) / combinatoria(48, 5)) +
+                    ((combinatoria(11, 4)*39) / combinatoria(49, 5)) +
+                    (combinatoria(11, 5) / combinatoria(50, 5))
+            ) + 3 * (combinatoria(13, 5) / combinatoria(50, 5))
+        else:
+            return 2 * (
+                    (combinatoria(12, 4)*38/combinatoria(49, 5)) + (combinatoria(12, 5)/combinatoria(50, 5))
+            ) + 2 * (combinatoria(13, 5) / combinatoria(50, 5))
 
-    def calcular_posibilidades_poker(self):
-        return 523_000
+    def calcular_posibilidades_escalera_real(self):
+        if self.carta1.numero == 1 or self.carta1.numero > 9:
+            if self.carta2.numero == 1 or self.carta2.numero > 9:
+                if self.carta1.palo == self.carta2.palo:
+                    return (47*46/combinatoria(48, 3)) + 3/combinatoria(50, 5)
+                else:
+                    return 2 * (46/combinatoria(49, 4)) + 2/combinatoria(50, 5)
+            else:
+                return (46/combinatoria(49, 4)) + 3/combinatoria(50, 5)
+        elif self.carta2.numero == 1 or self.carta2.numero > 9:
+            return (46/combinatoria(49, 4)) + 3/combinatoria(50, 5)
+        else:
+            return 4/combinatoria(50, 5)
 
 
 if __name__ == '__main__':
