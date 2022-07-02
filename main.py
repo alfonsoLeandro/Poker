@@ -46,8 +46,8 @@ class Program:
         probabilidad_color = self.calcular_posibilidades_color()
         probabilidad_escalera_real = self.calcular_posibilidades_escalera_real()
 
-        print(f"Probabilidad de tener color: {'{:.2f}'.format(probabilidad_color * 100)}%.")
-        print(f"Probabilidad de tener escalera real: {'{:.2f}'.format(probabilidad_escalera_real * 100)}%.")
+        print("Probabilidad de tener color: {:.2f}%.".format(probabilidad_color * 100))
+        print("Probabilidad de tener escalera real: {:.2f}%.".format(probabilidad_escalera_real * 100))
         print()
 
     def calcular_posibilidades_color(self):
