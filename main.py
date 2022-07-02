@@ -48,11 +48,17 @@ class Program:
         print(f"carta 2: {self.carta2}")
         print()
 
-        probabilidad_color = self.calcular_posibilidades_color()
-        probabilidad_escalera_real = self.calcular_posibilidades_escalera_real()
+        probabilidad_color = "{:.2f}%".format(self.calcular_posibilidades_color() * 100)
+        probabilidad_escalera_real = "{:.2f}%".format(self.calcular_posibilidades_escalera_real() * 100)
 
-        print("Probabilidad de tener color: {:.2f}%.".format(probabilidad_color * 100))
-        print("Probabilidad de tener escalera real: {:.2f}%.".format(probabilidad_escalera_real * 100))
+        if probabilidad_color == "0.00%":
+            probabilidad_color = "Muy pequeña (menor a 0.01%)"
+
+        if probabilidad_escalera_real == "0.00%":
+            probabilidad_escalera_real = "Muy pequeña (menor a 0.01%)"
+
+        print(f"Probabilidad de tener color: {probabilidad_color}.")
+        print(f"Probabilidad de tener escalera real: {probabilidad_escalera_real}.")
         print()
 
     def calcular_posibilidades_color(self):
