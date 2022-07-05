@@ -77,7 +77,7 @@ class Program:
         if self.carta1.numero == 1 or self.carta1.numero > 9:
             if self.carta2.numero == 1 or self.carta2.numero > 9:
                 if self.carta1.palo == self.carta2.palo:
-                    return (47*46/combinatoria(48, 3)) + 3/combinatoria(50, 5)
+                    return (47*46/combinatoria(48, 5)) + 3/combinatoria(50, 5)
                 else:
                     return 2 * (46/combinatoria(49, 5)) + 2/combinatoria(50, 5)
             else:
