@@ -79,11 +79,11 @@ class Program:
                 if self.carta1.palo == self.carta2.palo:
                     return (47*46/combinatoria(48, 3)) + 3/combinatoria(50, 5)
                 else:
-                    return 2 * (46/combinatoria(49, 4)) + 2/combinatoria(50, 5)
+                    return 2 * (46/combinatoria(49, 5)) + 2/combinatoria(50, 5)
             else:
-                return (46/combinatoria(49, 4)) + 3/combinatoria(50, 5)
+                return (46/combinatoria(49, 5)) + 3/combinatoria(50, 5)
         elif self.carta2.numero == 1 or self.carta2.numero > 9:
-            return (46/combinatoria(49, 4)) + 3/combinatoria(50, 5)
+            return (46/combinatoria(49, 5)) + 3/combinatoria(50, 5)
         else:
             return 4/combinatoria(50, 5)
 
